@@ -37,13 +37,7 @@ hbs.registerPartials(path.join(__dirname,`views/parcials`));
 
 
 
-/*-----PARA QUE FUNCIONE CON LA BASE DE DATOS HAY QUE DESCOMENTAR----
--------LO QUE ESTA COMENTADO AHORA Y COMENTAR LAS LINEAS ----
--------121 - 122 Y  123 */
-
-
-
-/*const conexion = mysql.createConnection({
+const conexion = mysql.createConnection({
 host:process.env.HOST,
 user:process.env.USER,
 password:process.env.PASSWORD,
@@ -53,7 +47,7 @@ port:process.env.DBPORT
 conexion.connect((err) =>{
    if(err) throw err;
   console.log(`Conectado a la Base de datos de : ${process.env.DATABASE}`);
-})*/
+})
 
 
 
@@ -99,7 +93,7 @@ app.get('/matias', (req, res) => {
 
 
 app.post('/', (req, res) =>{
-  /*const nombre = req.body.nombre;
+    const nombre = req.body.nombre;
     const apellido = req.body.apellido;
     const telefono = req.body.telefono;
     const email = req.body.email;
@@ -115,10 +109,8 @@ app.post('/', (req, res) =>{
                 user: process.env.EMAIL,
                 pass: process.env.EMAILPASSWORD
             }
-        */res.json({
-            probando: ` deploy sin la base de datos`
-        })
-        });/*
+       
+        });
        
         let info = await transporter.sendMail({
             from: process.env.EMAIL,
@@ -139,11 +131,13 @@ app.post('/', (req, res) =>{
     conexion.query(sql, datos, function(err){
         if (err) throw err;
             console.log(`Se ha registrado un ingreso de datos`);
+
+
             //Email
             envioMail().catch(console.error);
             res.render('enviado')
         })
-})*/
+})
 
 
 app.listen(PORT, ()=>{
